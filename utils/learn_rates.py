@@ -158,7 +158,6 @@ class LearningErrorRate(LearningRate):
 
         self.min_derror_decay_start = min_derror_decay_start
         self.epoch = 1
-        self.decay = decay
         self.min_error_decay_start = min_error_decay_start
 
     def get_rate(self):
