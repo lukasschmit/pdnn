@@ -100,7 +100,7 @@ def parse_lrate(lrate_string):
                                  init_error = 100)
         return lrate
 
-    # 'MD:0.08:0.5:0.05,0.0002:25'
+    # 'ED:0.08:0.5:0.05,0.0002:10'
     if elements[0] == 'ED':  # Min-rate ErrorBob
         if (len(elements) != 5):
             return None

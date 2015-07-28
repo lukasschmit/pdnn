@@ -146,7 +146,7 @@ class LearningErrorRate(LearningRate):
     def __init__(self, start_rate = 0.08, scale_by = 0.5,
                  min_derror_decay_start = 0.05,
                  min_lrate_stop = 0.0002, init_error = 100,
-                 decay=False, min_error_decay_start=25):
+                 min_error_decay_start=25):
 
         self.start_rate = start_rate
         self.init_error = init_error
@@ -172,15 +172,10 @@ class LearningErrorRate(LearningRate):
         if(current_error < self.lowest_error):
             self.lowest_error = current_error
 
-        if (self.decay):
-            if (self.rate < self.min_lrate_stop):
-                self.rate = 0.0
-            else:
-                self.rate *= self.scale_by
-        else:
-            if (diff_error < self.min_derror_decay_start) and (self.lowest_error <= self.min_error_decay_start):
-                self.decay = True
-                self.rate *= self.scale_by
+        if (self.rate < self.min_lrate_stop):
+            self.rate = 0.0
+        if (diff_error < self.min_derror_decay_start) and (self.lowest_error <= self.min_error_decay_start):
+            self.rate *= self.scale_by
 
         self.epoch += 1
         return self.rate
