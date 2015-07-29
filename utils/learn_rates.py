@@ -177,7 +177,7 @@ class LearningErrorRate(LearningRate):
             self.rate *= self.scale_by
 
         if (self.epoch >= 100 and self.lowest_error > self.min_error_decay_start):
-        	self.learning_rate = 0.0
+        	self.rate = 0.0
 
         self.epoch += 1
         return self.rate
